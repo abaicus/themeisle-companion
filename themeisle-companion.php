@@ -3,7 +3,7 @@
 Plugin Name: ThemeIsle Companion
 Plugin URI: https://github.com/Codeinwp/themeisle-companion
 Description: Creates the widgets "Zerif - Testimonial widget" , "Zerif - Team member widget" , "Zerif - Our focus widget" and "Zerif - Clients widget" in the Zerif Lite theme.
-Version: 1.0.0
+Version: 1.0.1
 Author: Themeisle
 Author URI: http://themeisle.com
 Text Domain: themeisle-companion
@@ -12,7 +12,7 @@ License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-define( 'THEMEISLE_COMPANION_VERSION',  '1.0.0' );
+define( 'THEMEISLE_COMPANION_VERSION',  '1.0.1' );
 define( 'THEMEISLE_COMPANION_PATH',  plugin_dir_path( __FILE__ ) );
 define( 'THEMEISLE_COMPANION_URL',  plugin_dir_url( __FILE__ ) );
 
@@ -26,7 +26,7 @@ if ( ! function_exists( 'add_action' ) ) {
  */
 function themeisle_populate_with_default_widgets() {
 
-	$zerif_lite_sidebars = array ( 'sidebar-ourfocus' => 'sidebar-ourfocus', 'sidebar-testimonials' => 'sidebar-testimonials', 'sidebar-ourteam' => 'sidebar-ourteam' );
+	$zerif_lite_sidebars = array ( 'sidebar-ourfocus' => 'sidebar-ourfocus', 'sidebar-testimonials' => 'sidebar-testimonials', 'sidebar-ourteam' => 'sidebar-ourteam', 'sidebar-aboutus' => 'sidebar-aboutus' );
 
 	$active_widgets = get_option( 'sidebars_widgets' );
 
@@ -297,6 +297,88 @@ function themeisle_populate_with_default_widgets() {
 		$zerif_lite_counter ++;
 
 		update_option( 'sidebars_widgets', $active_widgets );
+	}
+
+	/**
+	 * Populate the Aboutus sidebar with Client widgets
+	 */
+	if ( empty ( $active_widgets[ $zerif_lite_sidebars['sidebar-aboutus'] ] ) ) {
+
+		$zerif_lite_counter = 1;
+
+		/* client widget #1 */
+
+		$active_widgets['sidebar-aboutus'][0] = 'zerif_clients-widget-' . $zerif_lite_counter;
+
+		$client_content[ $zerif_lite_counter ] = array(
+			'link'      => '#',
+			'image_uri' => get_template_directory_uri() . "/images/clients1.png"
+		);
+
+		update_option( 'widget_zerif_clients-widget', $client_content );
+
+		$zerif_lite_counter ++;
+
+		/* client widget #2 */
+
+		$active_widgets['sidebar-aboutus'][] = 'zerif_clients-widget-' . $zerif_lite_counter;
+
+		$client_content[ $zerif_lite_counter ] = array(
+			'link'      => '#',
+			'image_uri' => get_template_directory_uri() . "/images/clients2.png"
+		);
+
+		update_option( 'widget_zerif_clients-widget', $client_content );
+
+		$zerif_lite_counter ++;
+
+		update_option( 'sidebars_widgets', $active_widgets );
+
+		/* client widget #3 */
+
+		$active_widgets['sidebar-aboutus'][] = 'zerif_clients-widget-' . $zerif_lite_counter;
+
+		$client_content[ $zerif_lite_counter ] = array(
+			'link'      => '#',
+			'image_uri' => get_template_directory_uri() . "/images/clients3.png"
+		);
+
+		update_option( 'widget_zerif_clients-widget', $client_content );
+
+		$zerif_lite_counter ++;
+
+		update_option( 'sidebars_widgets', $active_widgets );
+
+		/* client widget #4 */
+
+		$active_widgets['sidebar-aboutus'][] = 'zerif_clients-widget-' . $zerif_lite_counter;
+
+		$client_content[ $zerif_lite_counter ] = array(
+			'link'      => '#',
+			'image_uri' => get_template_directory_uri() . "/images/clients4.png"
+		);
+
+		update_option( 'widget_zerif_clients-widget', $client_content );
+
+		$zerif_lite_counter ++;
+
+		update_option( 'sidebars_widgets', $active_widgets );
+
+		/* client widget #5 */
+
+		$active_widgets['sidebar-aboutus'][] = 'zerif_clients-widget-' . $zerif_lite_counter;
+
+		$client_content[ $zerif_lite_counter ] = array(
+			'link'      => '#',
+			'image_uri' => get_template_directory_uri() . "/images/clients5.png"
+		);
+
+		update_option( 'widget_zerif_clients-widget', $client_content );
+
+		$zerif_lite_counter ++;
+
+		update_option( 'sidebars_widgets', $active_widgets );
+
 	}
 
 	update_option( 'themeisle_companion_flag','installed' );
